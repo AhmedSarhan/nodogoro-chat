@@ -8,10 +8,12 @@ const MessageText = ({ message }: { message: Message }) => {
   const [user] = useAuthState(auth);
   const isYourMessage = useMemo(() => uid === user?.uid, [uid, user?.uid]);
   return (
-    <li style={{ float: isYourMessage ? "right" : "left" }}>
-      <img src={photoUrl} alt={username} />
+    <li
+    //  style={{ float: isYourMessage ? "right" : "left" }}
+    >
+      {/* <img src={photoUrl} alt={username} /> */}
       <p>{text}</p>
-      <p>{username}</p>
+      {/* <p>{username}</p> */}
     </li>
   );
 };
