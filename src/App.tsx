@@ -8,12 +8,13 @@ import ChatRoom from "./components/chat-room";
 import SignIn from "./components/signin";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCx5k6DsBqiFDZpBq2AV7VmZQSFXcOkRhw",
-  authDomain: "nodogoro-chat.firebaseapp.com",
-  projectId: "nodogoro-chat",
-  storageBucket: "nodogoro-chat.appspot.com",
-  messagingSenderId: "105625459870",
-  appId: "1:105625459870:web:48e508d4755a3c4bd2ef8f",
+  apiKey: process.env.REACT_APP_API_KEY,
+  authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+  projectId: process.env.REACT_APP_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_APP_ID,
+  measurementId: process.env.REACT_APP_MEASUREMENT_ID,
 };
 
 const firebaseApp = initializeApp(firebaseConfig);
