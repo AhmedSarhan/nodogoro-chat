@@ -1,5 +1,6 @@
+import Typography from "@mui/material/Typography";
 import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
-import React from "react";
+import { Timestamp } from "firebase/firestore";
 import { auth } from "../App";
 
 const signInWithGoogle = () => {
@@ -25,8 +26,21 @@ const signInWithGoogle = () => {
     });
 };
 
-const SignIn = () => {
-  return <button onClick={signInWithGoogle}>Sign In with Google</button>;
+const SignIn = ({
+  isBanned,
+  banDate,
+}: {
+  isBanned: boolean;
+  banDate: Timestamp;
+}) => {
+  return (
+    <>
+      <button onClick={signInWithGoogle}>Sign In with Google</button>
+      {isBanned ? (
+        <Typography variant="h6" color="error" component="h6"></Typography>
+      ) : null}
+    </>
+  );
 };
 
 export default SignIn;

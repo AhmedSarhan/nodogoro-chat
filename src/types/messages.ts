@@ -7,4 +7,5 @@ export interface Message {
   uid?: string;
   photoUrl?: string;
   username: string;
+  isForbidden?: boolean;
 }

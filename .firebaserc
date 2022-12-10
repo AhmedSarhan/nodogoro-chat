@@ -1,5 +1,8 @@
 {
   "projects": {
-    "default": "nodogoro-chat"
-  }
+    "default": "nodogoro-chat",
+    "dev": "nodogoro-chat-d43ec"
+  },
+  "targets": {},
+  "etags": {}
 }
