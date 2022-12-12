@@ -1,9 +1,6 @@
 import { Button } from "@mui/material";
-import { auth } from "../../App";
+import { signOutHandler } from "../../firebase";
 
-const signOutHandler = () => {
-  auth.signOut();
-};
 const SignOut = () => {
   return (
     <Button variant="outlined" onClick={signOutHandler} color="error">

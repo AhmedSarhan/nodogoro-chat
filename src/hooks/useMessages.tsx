@@ -10,7 +10,7 @@ import {
   WithFieldValue,
 } from "firebase/firestore";
 import { useCollectionData } from "react-firebase-hooks/firestore";
-import { firestore } from "../App";
+import { firestore } from "../firebase";
 import { Message } from "../types/messages";
 
 const messagesConverter: FirestoreDataConverter<Message> = {

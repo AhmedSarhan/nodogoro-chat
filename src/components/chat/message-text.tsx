@@ -5,14 +5,16 @@ import {
   ListItemIcon,
   ListItemText,
   Typography,
+  useTheme,
 } from "@mui/material";
 import { useMemo } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { auth } from "../../App";
+import { auth } from "../../firebase";
 import { Message } from "../../types/messages";
 
 const MessageText = ({ message }: { message: Message }) => {
-  const { text, uid, username, id, photoUrl } = message;
+  const theme = useTheme();
+  const { text, uid, username, photoUrl } = message;
   const [user] = useAuthState(auth);
   const isYourMessage = useMemo(() => uid === user?.uid, [uid, user?.uid]);
   return (
@@ -33,7 +35,12 @@ const MessageText = ({ message }: { message: Message }) => {
             variant="body1"
             component="p"
             sx={{
-              bgcolor: "white",
+              bgcolor: isYourMessage
+                ? theme.palette.secondary["main"]
+                : theme.palette.primary["main"],
+              color: isYourMessage
+                ? theme.palette.secondary["contrastText"]
+                : theme.palette.primary["contrastText"],
               mx: isYourMessage ? 1 : -1,
               px: 2,
               py: 1,

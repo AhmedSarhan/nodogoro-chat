@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from "react";
-import { Grid, TextField, Button } from "@mui/material";
+import React, { useState } from "react";
+import { Grid, TextField, IconButton, InputAdornment } from "@mui/material";
+import useTheme from "@mui/material/styles/useTheme";
 import SendIcon from "@mui/icons-material/Send";
-import { auth, firestore } from "../../App";
+import { auth, firestore } from "../../firebase";
 import { collection, doc, setDoc, Timestamp } from "firebase/firestore";
 
 const NewMessage = () => {
+  const theme = useTheme();
   const [message, setMessage] = useState("");
-  useEffect(() => {
-    console.log("now", Timestamp.now());
-  }, []);
+
   const createMessage = async (e: React.SyntheticEvent) => {
     e.preventDefault();
     if (!message || message.trim() === "") return;
@@ -42,16 +42,22 @@ const NewMessage = () => {
         placeholder="Type something here..."
         size="medium"
         variant="filled"
-        sx={{ width: "88%" }}
+        fullWidth
+        InputProps={{
+          endAdornment: (
+            <InputAdornment position="end">
+              <IconButton
+                type="submit"
+                size="medium"
+                edge="end"
+                sx={{ mb: "1px", color: theme.palette.secondary["main"] }}
+              >
+                <SendIcon />
+              </IconButton>
+            </InputAdornment>
+          ),
+        }}
       />
-      <Button
-        type="submit"
-        variant="contained"
-        size="medium"
-        sx={{ mb: "1px" }}
-      >
-        <SendIcon />
-      </Button>
     </Grid>
   );
 };
