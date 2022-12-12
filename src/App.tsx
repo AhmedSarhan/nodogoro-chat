@@ -11,10 +11,12 @@ import { useTheme } from "@mui/material/styles";
 import { useAuth } from "./hooks/useAuth";
 import { useColorMode } from "./theme";
 import { firebaseApp } from "./firebase";
+import { useOnPageLeave } from "./hooks/useOnPageLeave";
 
 function App() {
+  useOnPageLeave();
   const { theme } = useColorMode();
-  console.log("Theme", theme);
+
   if (!firebaseApp || !theme) {
     return <></>;
   }

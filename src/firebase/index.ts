@@ -44,8 +44,8 @@ export const signInWithGoogle = () => {
 };
 
 export const signOutHandler = async () => {
-  await auth.signOut();
   countActiveUsers(-1);
+  await auth.signOut();
 };
 
 const countActiveUsers = async (amount: number) => {

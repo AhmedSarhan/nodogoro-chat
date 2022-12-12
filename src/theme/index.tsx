@@ -78,7 +78,6 @@ function useCustomTheme() {
   );
 
   const toggleColorMode = useCallback(() => {
-    console.log("mode will change");
     setMode((prev) => {
       const newMode = prev === "dark" ? "light" : "dark";
       localStorage.setItem("theme", newMode);
