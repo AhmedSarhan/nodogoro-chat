@@ -47,7 +47,6 @@ const MessagesList = () => {
         messages.map((message) => (
           <MessageText message={message} key={message.id} />
         ))}
-      {/* <div ref={ref}></div> */}
     </Grid>
   );
 };

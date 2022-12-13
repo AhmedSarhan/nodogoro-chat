@@ -4,7 +4,7 @@ import Button from "@mui/material/Button";
 import GoogleIcon from "@mui/icons-material/Google";
 import { Timestamp } from "firebase/firestore";
 import { signInWithGoogle, useGetActiveUsersCount } from "../../firebase";
-import { getBanRemovalDate } from "../../utils";
+import { getBanRemovalDate } from "../../utils/utils";
 import { useState } from "react";
 
 const SignIn = ({

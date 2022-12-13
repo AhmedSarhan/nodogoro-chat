@@ -35,8 +35,7 @@ export const detectBadWords = functions.firestore
   });
 
 export const removeBannedUsersScheduler = functions.pubsub
-  .schedule("every 6 hours")
-  // .schedule("every 24 hours")
+  .schedule("every 24 hours")
   .onRun(async () => {
     const tsToMillis = Timestamp.now().toMillis();
     const date48hAgoMillis = tsToMillis - 48 * 60 * 60 * 1000;
@@ -58,8 +57,7 @@ export const removeBannedUsersScheduler = functions.pubsub
   });
 
 export const clearMessagesSchedular = functions.pubsub
-  .schedule("every 6 hours")
-  // .schedule("every 72 hours")
+  .schedule("every 24 hours")
   .onRun(async () => {
     const tsToMillis = Timestamp.now().toMillis();
     const date72hAgoMillis = tsToMillis - 72 * 60 * 60 * 1000;
@@ -68,6 +66,7 @@ export const clearMessagesSchedular = functions.pubsub
       .collection("messages")
       .where("createdAt", "<=", date72hAgo)
       .get();
+    console.log("data", data);
     const batch = db.batch();
     data.docs.forEach((doc) => {
       const docRef = doc.ref;
