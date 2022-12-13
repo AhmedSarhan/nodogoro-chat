@@ -32,6 +32,9 @@ export const signInWithGoogle = () => {
       // ...
     })
     .catch((error) => {
+      console.log("error", error);
+      console.log("error json", JSON.stringify(error));
+
       // Handle Errors here.
       const errorCode = error.code;
       const errorMessage = error.message;
