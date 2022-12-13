@@ -2,6 +2,43 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+
+# Nodogoro Chat
+
+## Project Description
+
+This is a serverless chat application built using React.js, TypeScript, MUI and Firebase services e.g. Firestore DB, Firebase Auth using Google Auth, Firebase Functions.
+
+## How it works
+
+- When you first visit the project, you are prompted with a sign in page that asks you to login with your google account.
+- Once logged in you can send messages and read messages on the spot as it's working in realtime
+- There's the basic rules of conduct against hate speech and cussing so if you type a message that might be inappropriate you will be banned and logged out immediately, however the ban only lasts for 48 hours then you should be able to login again.
+- Chat messages older than 72 hours will be deleted periodically
+- the chat room can only contain 4 users at a time, this feature is a bit clancy a bit but working fine at the moment, with the caveat of user being logged out on page refresh.
+
+
+## Code Structure
+
+There are two main folders in the main directory:
+- src:
+  - it contains every thing related to our react application.
+- functions:
+  - it contains the serverless functions that manage some DB functionality, like the banning and un-banning functionality, the clear old messages functionality ..etc.
+
+## Functionality
+as mentioned above the functions direcotry contains the Firebase serverless functions, these functions are:
+- addUserToDB:
+  used on a new user signin "first time" to add that user to the users table in the database.
+- detectBadWords:
+  used on every new message as a profanity check to detect bad messages and ban users
+- removeBannedUsersScheduler:
+  a schedular function that runs every 24 hours to remove ban from users who have been banned for 48 hours.
+- clearMessagesSchedular:
+  another schedular function that runs every 24 hours to remove messages that have been sent over 72 hours ago in order to keep our DB small in scale.
+  
+   
+
 ## Available Scripts
 
 In the project directory, you can run:
